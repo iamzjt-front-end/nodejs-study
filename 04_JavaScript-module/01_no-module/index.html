@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./bar.js"></script>
+  <script src="./foo.js"></script>
+  <script src="./baz.js"></script>
+
+  <!-- 打印结果: -->
+  <!-- 小明 -->
+  <!-- 小丽 -->
+  <!-- 小丽 -->
+
+  <!-- 为什么会出现这种情况? -->
+  <!-- 因为在JavaScript中没有模块话的概念, 单个文件也不是单独的作用域, 会造成变量污染 -->
+  <!-- 早起解决办法: -->
+  <!-- 自执行函数 -->
+</body>
+
+</html>
