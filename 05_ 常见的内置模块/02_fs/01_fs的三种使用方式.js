@@ -15,6 +15,8 @@ fs.stat(filepath, (err, info) => {
     return;
   }
   console.log(info);
+  console.log(info.isFile()); // true
+  console.log(info.isDirectory()); // false
 });
 
 // 3. 方式三：promise方式
