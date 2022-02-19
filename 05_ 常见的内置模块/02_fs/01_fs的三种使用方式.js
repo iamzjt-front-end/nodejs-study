@@ -9,14 +9,13 @@ const filepath = "./abc.txt";
 // console.log(info);
 
 // 2. 方式二：异步操作
-// fs.stat(filepath, (err, info) => {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   } else {
-//     console.log(info);
-//   }
-// });
+fs.stat(filepath, (err, info) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log(info);
+});
 
 // 3. 方式三：promise方式
 fs.promises
