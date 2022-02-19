@@ -1,13 +1,14 @@
- const fs = require('fs');
+const fs = require("fs");
 
 // 案例：读取文件的信息
-const filepath = './abc.txt';
+const filepath = "./abc.txt";
 
 // 1. 方式一：同步操作
 const info = fs.statSync(filepath);
-console.log('后续需要执行的代码');
+console.log("后续需要执行的代码");
 console.log(info);
 
+// 文件信息
 // Stats {
 //   dev: 16777232,
 //   mode: 33188,
