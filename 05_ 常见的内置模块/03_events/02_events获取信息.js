@@ -12,5 +12,11 @@ emitter.on("click", (args) => {
 const listener2 = (args) => {
   console.log("监听2到了click事件", args);
 };
-
 emitter.on("click", listener2);
+
+emitter.on("tap", (args) => {
+  console.log(args);
+});
+
+// 3. 获取注册的事件
+console.log(emitter.eventNames()); // [ 'click', 'tap' ]
