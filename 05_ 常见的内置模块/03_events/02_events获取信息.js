@@ -20,3 +20,5 @@ emitter.on("tap", (args) => {
 
 // 3. 获取注册的事件
 console.log(emitter.eventNames()); // [ 'click', 'tap' ]
+console.log(emitter.listenerCount('click')); // 2
+console.log(emitter.listeners('click')); // [ [Function (anonymous)], [Function: listener2] ]
