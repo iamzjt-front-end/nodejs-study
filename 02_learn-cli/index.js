@@ -2,20 +2,13 @@
 
 const program = require("commander");
 
+const helpOptions = require("./lib/core/help");
+
 // 查看版本号
 program.version(require("./package.json").version);
 
-// 增加自己的options
-program.option("-z --zjt", "a zjt cli");
-program.option(
-  "-d --dest <dest>",
-  "a destination folder, 例如：-d /src/components"
-);
-
-program.on("--help", function () {
-  console.log("Others:");
-  console.log("  other options~");
-});
+// 帮助和可选信息
+helpOptions();
 
 program.parse(process.argv);
 
