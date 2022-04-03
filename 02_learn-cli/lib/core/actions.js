@@ -18,6 +18,7 @@ const createProjectAction = async (project) => {
   await commandSpawn(command, ["install"], { cwd: `./${project}` });
 
   // 3. 运行 npm run serve
+  await commandSpawn(command, ["run", "serve"], { cwd: `./${project}` });
 
   // 4. 打开浏览器
 };
