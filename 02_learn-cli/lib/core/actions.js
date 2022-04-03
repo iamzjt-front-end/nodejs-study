@@ -1,8 +1,9 @@
 const { promisify } = require("util");
 
 const download = promisify(require("download-git-repo"));
-const { vueRepo } = require("../config/repo-config");
+const open = require("open");
 
+const { vueRepo } = require("../config/repo-config");
 const { commandSpawn } = require("../util/terminal");
 
 const createProjectAction = async (project) => {
@@ -22,6 +23,7 @@ const createProjectAction = async (project) => {
   await commandSpawn(command, ["run", "serve"], { cwd: `./${project}` });
 
   // 4. 打开浏览器
+  open("http://localhost:8080");
 };
 
 module.exports = {
