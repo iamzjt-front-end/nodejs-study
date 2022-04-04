@@ -20,7 +20,7 @@ const createProjectAction = async (project) => {
 
   // 3. 运行 npm run serve
   console.log("依赖安装完成，正在启动项目，请稍候...");
-  await commandSpawn(command, ["run", "serve"], { cwd: `./${project}` });
+  commandSpawn(command, ["run", "serve"], { cwd: `./${project}` });
 
   // 4. 打开浏览器
   open("http://localhost:8080");
