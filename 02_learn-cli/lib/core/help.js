@@ -5,7 +5,7 @@ const helpOptions = () => {
   program.option("-z --zjt", "a zjt cli");
   program.option(
     "-d --dest <dest>",
-    "a destination folder, 例如：-d /src/components"
+    "a destination folder, 例如: -d /src/components"
   );
 
   program.on("--help", function () {

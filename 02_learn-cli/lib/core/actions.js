@@ -26,6 +26,9 @@ const createProjectAction = async (project) => {
   open("http://localhost:8080");
 };
 
+const addCpnAction = () => {};
+
 module.exports = {
   createProjectAction,
+  addCpnAction,
 };
