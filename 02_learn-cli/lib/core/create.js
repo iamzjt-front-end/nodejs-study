@@ -10,7 +10,9 @@ const createCommands = () => {
 
   program
     .command("addcpn <name>s")
-    .description("add vue component, 例如: zjt addcpn HelloWorld")
+    .description(
+      "add vue component, 例如: zjt addcpn HelloWorld -d src/components"
+    )
     .action(addCpnAction);
 };
 

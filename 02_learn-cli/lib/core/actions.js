@@ -6,6 +6,7 @@ const open = require("open");
 const { vueRepo } = require("../config/repo-config");
 const { commandSpawn } = require("../util/terminal");
 
+// 1. 创建项目的action
 const createProjectAction = async (project) => {
   console.log("欢迎使用zjt 脚手架！😊");
 
@@ -26,7 +27,17 @@ const createProjectAction = async (project) => {
   open("http://localhost:8080");
 };
 
-const addCpnAction = () => {};
+// 2. 添加组件的action
+const addCpnAction = (name, dest = "src/component") => {
+  // 1. 有对应的ejs模版
+
+  // 2. 编译ejs模版 result
+
+  // 3. 将result写入到.vue文件中
+
+  // 4. 放到对应的文件夹中
+
+};
 
 module.exports = {
   createProjectAction,
