@@ -1,6 +1,6 @@
 const program = require("commander");
 
-const { createProjectAction, addCpnAction } = require("./actions");
+const { createProjectAction, addComponentAction } = require("./actions");
 
 const createCommands = () => {
   program
@@ -9,11 +9,11 @@ const createCommands = () => {
     .action(createProjectAction);
 
   program
-    .command("addcpn <name>s")
-    .description(
-      "add vue component, 例如: zjt addcpn HelloWorld -d src/components"
-    )
-    .action(addCpnAction);
+    .command("addcpn <name>")
+    .description("add vue component, 例如: zjt addcpn HelloWorld [-d src/components]")
+    .action((name) => {
+      addComponentAction(name, program._optionValues.dest || "src/components");
+    });
 };
 
 module.exports = createCommands;

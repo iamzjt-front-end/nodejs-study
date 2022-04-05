@@ -1,10 +1,12 @@
 const { promisify } = require("util");
+const path = require("path");
 
 const download = promisify(require("download-git-repo"));
 const open = require("open");
 
 const { vueRepo } = require("../config/repo-config");
 const { commandSpawn } = require("../util/terminal");
+const { compile, writeToFile } = require("../util/utils");
 
 // 1. 创建项目的action
 const createProjectAction = async (project) => {
@@ -28,18 +30,16 @@ const createProjectAction = async (project) => {
 };
 
 // 2. 添加组件的action
-const addCpnAction = (name, dest = "src/component") => {
-  // 1. 有对应的ejs模版
+const addComponentAction = async (name, dest) => {
+  // 1. 编译ejs模版 result
+  const result = await compile("vue-component.ejs", { name, lowerName: name.toLowerCase() });
 
-  // 2. 编译ejs模版 result
-
-  // 3. 将result写入到.vue文件中
-
-  // 4. 放到对应的文件夹中
-
+  // 2. 将result写入到.vue文件中
+  const targetPath = path.resolve(dest, `${name}.vue`);
+  writeToFile(targetPath, result);
 };
 
 module.exports = {
   createProjectAction,
-  addCpnAction,
+  addComponentAction,
 };
