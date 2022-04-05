@@ -1,6 +1,6 @@
 const program = require("commander");
 
-const { createProjectAction, addComponentAction } = require("./actions");
+const { createProjectAction, addComponentAction, addPageAndRouteAction } = require("./actions");
 
 const createCommands = () => {
   program
@@ -14,6 +14,13 @@ const createCommands = () => {
     .action((name) => {
       addComponentAction(name, program._optionValues.dest || "src/components");
     });
+
+  program
+    .command("addpage <page>")
+    .description("add vue page and router config, 例如: zjt addpage Home [-d src/pages]")
+    .action((page) => {
+      addPageAndRouteAction(page, program._optionValues.dest || "src/pages");
+    })
 };
 
 module.exports = createCommands;

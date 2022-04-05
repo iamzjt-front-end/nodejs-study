@@ -6,9 +6,9 @@ const open = require("open");
 
 const { vueRepo } = require("../config/repo-config");
 const { commandSpawn } = require("../util/terminal");
-const { compile, writeToFile } = require("../util/utils");
+const { compile, writeToFile, createDirSync } = require("../util/utils");
 
-// 1. 创建项目的action
+// 创建项目的action
 const createProjectAction = async (project) => {
   console.log("欢迎使用zjt 脚手架！😊");
 
@@ -29,7 +29,7 @@ const createProjectAction = async (project) => {
   open("http://localhost:8080");
 };
 
-// 2. 添加组件的action
+// 添加组件的action
 const addComponentAction = async (name, dest) => {
   // 1. 编译ejs模版 result
   const result = await compile("vue-component.ejs", { name, lowerName: name.toLowerCase() });
@@ -39,7 +39,27 @@ const addComponentAction = async (name, dest) => {
   writeToFile(targetPath, result);
 };
 
+
+// 添加组件和路由的action
+const addPageAndRouteAction = async (name, dest) => {
+  // 1. 编辑ejs模版
+  const nameObj = { name, lowerName: name.toLowerCase() };
+  const pageResult = await compile("vue-component.ejs", nameObj);
+  const routeResult = await compile("vue-router.ejs", nameObj);
+
+  // 2. 写入文件
+  // 判断path是否存在，如果不存在，创建对应的文件夹
+  const targetPath = path.resolve(dest, name.toLowerCase());
+  if (createDirSync(targetPath)) {
+    const targetPagePath = path.resolve(targetPath, `${name}.vue`);
+    const targetRoutePath = path.resolve(targetPath, "router.js");
+    writeToFile(targetPagePath, pageResult);
+    writeToFile(targetRoutePath, routeResult);
+  }
+}
+
 module.exports = {
   createProjectAction,
   addComponentAction,
+  addPageAndRouteAction, 
 };
