@@ -58,8 +58,25 @@ const addPageAndRouteAction = async (name, dest) => {
   }
 }
 
+// 添加store的action
+const addStoreAction = async (name) => {
+  // 1. 编译ejs模版
+  const storeResult = await compile("vue-store.ejs", {});
+  const typesResult = await compile("vue-types.ejs", {});
+
+  // 2. 创建文件
+  const targetPath = path.resolve("src/store/modules", name);
+  if (createDirSync(targetPath)) {
+    const targetStorePath = path.resolve(targetPath, "index.js");
+    const targetTypesPath = path.resolve(targetPath, "types.js");
+    writeToFile(targetStorePath, storeResult);
+    writeToFile(targetTypesPath, typesResult);
+  }
+}
+
 module.exports = {
   createProjectAction,
   addComponentAction,
-  addPageAndRouteAction, 
+  addPageAndRouteAction,
+  addStoreAction,
 };
