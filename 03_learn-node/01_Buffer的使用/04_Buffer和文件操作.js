@@ -24,3 +24,15 @@ const sharp = require("sharp");
 
 
 // sharp库的使用
+// sharp("./background.png")
+//   .resize(320, 240)
+//   .toFile("baz.png");
+
+sharp("./background.png")
+  .resize(480, 360)
+  .toBuffer()
+  .then(data => {
+    fs.writeFile("./bax.png", data, err => {
+      console.log(err);
+    })
+  })
