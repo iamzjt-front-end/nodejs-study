@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-// 之前的方式
+// 之前的读取文件方式
 // fs.readFile("./foo.txt", (err, data) => {
 //   console.log(data);
 // })
