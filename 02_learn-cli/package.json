@@ -1,7 +1,7 @@
 {
-  "name": "zjt-cli",
-  "version": "1.0.0",
-  "description": "",
+  "name": "zjt-vue-cli",
+  "version": "1.0.1",
+  "description": "zjt cli 个人脚手架（学习用）",
   "main": "index.js",
   "bin": {
     "zjt": "index.js"
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["vue cli", "zjt", "cli"],
-  "author": "IamZJT",
+  "author": "iamzjt",
   "license": "MIT",
   "homepage": "https://gitee.com/iamzjt",
   "repository": {
