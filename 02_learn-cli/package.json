@@ -9,9 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["vue cli", "zjt", "cli"],
+  "author": "IamZJT",
+  "license": "MIT",
+  "homepage": "https://gitee.com/iamzjt",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/iamzjt/nodes-study/tree/master/02_learn-cli"
+  },
   "dependencies": {
     "commander": "^9.0.0",
     "download-git-repo": "^3.0.2",
