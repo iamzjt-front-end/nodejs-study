@@ -3,7 +3,7 @@ const url = require("url");
 const qs = require("querystring");
 
 // 创建一个服务器
-const serve = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
   const { pathname } = url.parse(req.url);
   if (pathname === "/login") {
     if (req.method === "POST") {
@@ -22,6 +22,6 @@ const serve = http.createServer((req, res) => {
 })
 
 // 启动服务器, 并且指定端口号和主机
-serve.listen(8888, '0.0.0.0', () => {
+server.listen(8888, '0.0.0.0', () => {
   console.log("服务器启动成功~");
 });
