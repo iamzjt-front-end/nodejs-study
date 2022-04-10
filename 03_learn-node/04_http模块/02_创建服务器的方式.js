@@ -20,7 +20,7 @@ const serve2 = new http.Server((req, res) => {
 //   console.log("serve2启动成功~");
 // });
 
-serve2.listen(8000, () => {
+serve2.listen(8001, () => {
   console.log("serve2启动成功~");
   // console.log(serve2.address().port);
 });
