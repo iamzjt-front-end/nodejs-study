@@ -2,7 +2,7 @@ const http = require("http");
 
 const server1 = http.createServer((req, res) => {
   res.end("Server1");
-})
+});
 
 server1.listen(8000, () => {
   console.log("serve1启动成功~");
