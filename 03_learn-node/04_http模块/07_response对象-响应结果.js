@@ -4,7 +4,7 @@ const http = require("http");
 const server = http.createServer((req, res) => {
   // 响应结果
   res.write("响应结果一");
-  res.end();
+  res.end("Hello World");
 })
 
 // 启动服务器, 并且指定端口号和主机
