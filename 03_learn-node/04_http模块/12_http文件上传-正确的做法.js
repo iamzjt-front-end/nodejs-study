@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
   const { pathname } = url.parse(req.url);
   if (pathname === "/upload") {
     if (req.method === "POST") {
+      // 图片必须设置为二进制的
       req.setEncoding('binary');
 
       let body = "";
