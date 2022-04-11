@@ -11,17 +11,17 @@ const server = http.createServer((req, res) => {
       req.setEncoding("binary");
 
       let body = "";
-      const boundary = req.headers["content-type"]
-        .split(";")[1]
-        .replace(" boundary=", "");
-      console.log(boundary);
+      const boundary = req.headers["content-type"].split(";")[1].replace(" boundary=", "");
+      // console.log(boundary);
 
       req.on("data", (data) => {
         body += data;
+        let progress = `上传进度：${body.length / req.headers["content-length"] * 100}%`;
+        console.log(progress);
       });
 
       req.on("end", () => {
-        console.log(body);
+        // console.log(body);
         // 处理body
         // 1. 获取image/png的位置
         const payload = qs.parse(body, "\r\n", ": ");
@@ -36,10 +36,7 @@ const server = http.createServer((req, res) => {
         imageData = imageData.replace(/^\s\s*/, "");
 
         // 4. 将最后的boundary去除掉
-        imageData = imageData.substring(
-          0,
-          imageData.indexOf(`\r\n--${boundary}--\r\n`)
-        );
+        imageData = imageData.substring(0, imageData.indexOf(`\r\n--${boundary}--\r\n`));
 
         fs.writeFile("./foo.png", imageData, "binary", (err) => {
           if (!err) {
