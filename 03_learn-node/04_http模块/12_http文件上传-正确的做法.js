@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
   if (pathname === "/upload") {
     if (req.method === "POST") {
       // 图片必须设置为二进制的
-      req.setEncoding('binary');
+      req.setEncoding("binary");
 
       let body = "";
       const boundary = req.headers["content-type"]
@@ -36,7 +36,10 @@ const server = http.createServer((req, res) => {
         imageData = imageData.replace(/^\s\s*/, "");
 
         // 4. 将最后的boundary去除掉
-        imageData = imageData.substring(0, imageData.indexOf(`\r\n--${boundary}--\r\n`));
+        imageData = imageData.substring(
+          0,
+          imageData.indexOf(`\r\n--${boundary}--\r\n`)
+        );
 
         fs.writeFile("./foo.png", imageData, "binary", (err) => {
           if (!err) {
