@@ -24,5 +24,5 @@ app.use("/home", (req, res, next) => {
 });
 
 app.listen(8888, () => {
-  console.log("普通中间件服务器启动成功~");
+  console.log("路径中间件服务器启动成功~");
 })
