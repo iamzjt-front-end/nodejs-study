@@ -1,0 +1,2 @@
+::1 - - [13/Apr/2022:06:47:33 +0000] "GET /home HTTP/1.1" 200 - "-" "PostmanRuntime/7.29.0"
+::1 - - [13/Apr/2022:06:48:55 +0000] "GET /home HTTP/1.1" 200 - "-" "PostmanRuntime/7.29.0"
