@@ -1,14 +1,27 @@
+const path = require("path");
+
 const express = require("express");
 const multer = require("multer");
 
 const app = express();
 
-const upload = multer();
-app.use(upload.any());
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./upload/");
+  },
+  filename: (req, file, cb) => {
+    // 获取当前时间戳 + 源文件的后缀名
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-app.post("/login", (req, res, next) => {
-  console.log(req.body);
-  res.end("登录成功");
+const upload = multer({
+  // dest: "./upload/",
+  storage,
+});
+
+app.post("/upload", upload.single("file"), (req, res, next) => {
+  res.end("文件上传成功~");
 });
 
 app.listen(8888, () => {
