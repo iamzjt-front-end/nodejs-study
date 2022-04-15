@@ -4,6 +4,7 @@ const app = new Koa();
 
 app.use((ctx, next) => {
   console.log("中间件被执行~");
+  ctx.response.body = "Hello World~";
 });
 
 app.listen(8888, () => {
