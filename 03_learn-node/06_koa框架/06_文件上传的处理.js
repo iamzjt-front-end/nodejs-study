@@ -1,11 +1,9 @@
 const Koa = require("koa");
-const bodyParser = require("koa-bodyparser");
 const multer = require("koa-multer");
 
 const app = new Koa();
 const upload = multer();
 
-app.use(bodyParser());
 app.use(upload.any());
 
 app.use((ctx, next) => {
@@ -14,5 +12,5 @@ app.use((ctx, next) => {
 });
 
 app.listen(8888, () => {
-  console.log("koa参数解析服务器启动成功~");
+  console.log("koa文件上传服务器启动成功~");
 });

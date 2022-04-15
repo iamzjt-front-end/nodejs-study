@@ -28,5 +28,5 @@ userRouter.get("/", (ctx, next) => {
 app.use(userRouter.routes());
 
 app.listen(8888, () => {
-  console.log("koa路由服务器启动成功~");
+  console.log("koa参数解析服务器启动成功~");
 });
