@@ -1,13 +1,25 @@
+const path = require("path");
+
 const Koa = require("koa");
 const Router = require("koa-router");
 const multer = require("koa-multer");
 
 const app = new Koa();
 const uploadRouter = new Router({
-  prefix: "upload",
+  prefix: "/upload",
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads/");
+  },
+  filename: (req, file, cb) => {
+    // 获取当前时间戳 + 源文件的后缀名
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 const upload = multer({
-  dest: "./uploads/",
+  storage,
 });
 
 uploadRouter.post("/avator", upload.single("avator"), (ctx, next) => {
