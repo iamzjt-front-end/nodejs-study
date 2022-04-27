@@ -17,6 +17,6 @@ const statement = `
   SELECT * FROM products WHERE price > ? AND score > ?;
 `;
 
-connenctionPool.execute(statement, [6000, 7], (err, results) => {
+connenctionPool.promise.execute(statement, [6000, 7], (err, results) => {
   console.log(results);
 });
