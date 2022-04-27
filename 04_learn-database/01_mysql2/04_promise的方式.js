@@ -17,6 +17,12 @@ const statement = `
   SELECT * FROM products WHERE price > ? AND score > ?;
 `;
 
-connenctionPool.promise.execute(statement, [6000, 7], (err, results) => {
-  console.log(results);
-});
+connenctionPool
+  .promise()
+  .execute(statement, [6000, 7])
+  .then(([results, fields]) => {
+    console.log(results);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
