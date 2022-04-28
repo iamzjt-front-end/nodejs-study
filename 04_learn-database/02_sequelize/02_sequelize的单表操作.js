@@ -5,9 +5,9 @@ const sequelize = new Sequelize("coderhub", "root", "zjtmysql132", {
   dialect: "mysql",
 });
 
-class Products extends Model {}
+class Product extends Model {}
 
-Products.init(
+Product.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -22,16 +22,16 @@ Products.init(
     score: DataTypes.DOUBLE,
   },
   {
-    tableName: "products",
+    tableName: "Product",
     createdAt: false,
     updatedAt: false,
     sequelize,
   }
 );
 
-async function queryProducts() {
-  // 1.查询products表中所有的内容
-  // const result = await Products.findAll({
+async function queryProduct() {
+  // 1.查询Product表中所有的内容
+  // const result = await Product.findAll({
   //   where: {
   //     price: {
   //       [Op.gte]: 5000, // gt >, gte >=, lt <,  lte <=
@@ -40,14 +40,14 @@ async function queryProducts() {
   // });
   // console.log(result);
   // 2.插入数据
-  // const result = await Products.create({
+  // const result = await Product.create({
   //   title: "三星Nova",
   //   price: 8888,
   //   score: 5.5,
   // });
   // console.log(result);
   // 3.更新数据
-  const result = await Products.update(
+  const result = await Product.update(
     {
       price: 3688,
     },
@@ -60,4 +60,4 @@ async function queryProducts() {
   console.log(result);
 }
 
-queryProducts();
+queryProduct();
