@@ -55,7 +55,7 @@ Products.init(
     },
   },
   {
-    tableName: "products",
+  tableName: "products",
     createdAt: false,
     updatedAt: false,
     sequelize,
