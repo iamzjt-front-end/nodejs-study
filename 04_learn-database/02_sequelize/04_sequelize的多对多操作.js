@@ -7,6 +7,7 @@ const sequelize = new Sequelize("coderhub", "root", "zjtmysql132", {
 
 // students
 class Students extends Model {}
+102.
 
 Students.init(
   {
