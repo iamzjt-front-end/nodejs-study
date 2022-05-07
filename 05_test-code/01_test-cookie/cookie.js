@@ -5,6 +5,7 @@ const app = new Koa();
 
 const testRouter = new Router();
 
+// 模拟登录接口
 testRouter.get("/test", (ctx, next) => {
   ctx.cookies.set("name", "lilei", {
     maxAge: 50 * 1000, // 此处maxAge对应的是毫秒
@@ -13,6 +14,7 @@ testRouter.get("/test", (ctx, next) => {
   ctx.body = "test";
 });
 
+// 模拟登陆后其他请求接口
 testRouter.get("/demo", (ctx, next) => {
   // 读取cookie
   const value = ctx.cookies.get("name");
