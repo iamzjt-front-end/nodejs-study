@@ -1,19 +1,22 @@
 const Koa = require("koa");
 const Router = require("koa-router");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 const app = new Koa();
 
 const testRouter = new Router();
 
-// 对称加密: 加密和校验采用同一个秘钥
-const SERCET_KEY = "abccba123";
+// 非对称加密: 采用公钥和私钥的方式
+const PRIVATE_KEY = fs.readFileSync("./keys/private.key");
+const PUBLIC_KEY = fs.readFileSync("./keys/public.key");
 
 // 模拟登录接口
 testRouter.post("/test", (ctx, next) => {
   const user = { id: 110, name: "why" };
-  const token = jwt.sign(user, SERCET_KEY, {
+  const token = jwt.sign(user, PRIVATE_KEY, {
     expiresIn: 60 * 60,
+    algorithm: "RS256",
   });
 
   ctx.body = token;
@@ -26,7 +29,9 @@ testRouter.get("/demo", (ctx, next) => {
 
   // 验证token
   try {
-    const result = jwt.verify(token, SERCET_KEY);
+    const result = jwt.verify(token, PUBLIC_KEY, {
+      algorithms: ["RS256"],
+    });
     ctx.body = result;
   } catch (error) {
     ctx.body = "token是无效的~";
