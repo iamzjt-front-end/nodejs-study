@@ -47,5 +47,5 @@ app.use(testRouter.routes());
 app.use(testRouter.allowedMethods());
 
 app.listen(8686, () => {
-  console.log("cookie测试服务器启动成功~");
+  console.log("session测试服务器启动成功~");
 });
